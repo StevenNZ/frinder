@@ -1,5 +1,8 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Routes ,Route, Link } from 'react-router-dom';
+import SignUp from './Signup';
+
 
 function App() {
 
@@ -49,7 +52,6 @@ function App() {
     findMeButton.addEventListener("click", geoFindMe);
   }
   
-
   return (
     <div className="App">
       <button id="find-me" onClick={geoFindMe}>
@@ -57,6 +59,7 @@ function App() {
       </button>
       <p id="status">Click the button to get your location</p>
       <a id="map-link" target="_blank" rel="noopener noreferrer"></a>
+      <Link to="/sign-up" target="_blank">Open New Tab</Link>
     </div>
   );
 }
