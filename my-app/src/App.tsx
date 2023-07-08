@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes ,Route, Link } from 'react-router-dom';
-import SignUp from './Signup';
-
+import { Link } from 'react-router-dom';
+import AuthDetails from './auth/AuthDetails';
 
 function App() {
 
@@ -51,9 +50,11 @@ function App() {
   if (findMeButton) {
     findMeButton.addEventListener("click", geoFindMe);
   }
-  
+
+
   return (
     <div className="App">
+      <AuthDetails/>
       <button id="find-me" onClick={geoFindMe}>
         Find My Location
       </button>

@@ -1,37 +1,30 @@
 import React, { useState } from 'react';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from './auth/Firebase';
+
 
 const Signup = () => {
   const [name, setName] = useState('');
+  const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const signUp = (e) => {
     e.preventDefault();
-
-    // Perform validation
-    if (password !== confirmPassword) {
-      alert('Passwords do not match. Please try again.');
-      return;
-    }
-
-    // Perform further processing or submit the form
-    // For this example, we'll just log the submitted data
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
-
-    // Clear the form inputs
-    setName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <div>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={signUp}>
         <div>
           <label htmlFor="name">Name:</label>
           <input
@@ -39,6 +32,17 @@ const Signup = () => {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="age">Age:</label>
+          <input
+            type='number'
+            id="age"
+            min={1}
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
             required
           />
         </div>
