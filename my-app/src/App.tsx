@@ -106,7 +106,7 @@ function App() {
         frameBorder={0}
         style={{ border: 0 }}
         referrerPolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB3we59Q0GEIedl8pE7jO9zeBSn9_OS5Z4&q=University,Auckland+New Zealand"
+        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB3we59Q0GEIedl8pE7jO9zeBSn9_OS5Z4&q=places+near+University+of+Auckland&center=-36.8526098, 174.7702446&zoom=15"
         allowFullScreen
       ></iframe>
     </div>
