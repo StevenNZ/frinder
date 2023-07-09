@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
@@ -72,34 +72,43 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    const interval = setInterval(geoFindMe, 100000); // Run geoFindMe every 5 seconds
-
-    return () => {
-      clearInterval(interval); // Clean up the interval on component unmount
-    };
-  }, []);
-
   // Example usage of latitude and longitude
-  useEffect(() => {
+  function handleButtonClick(): void {
+    geoFindMe();
+
     if (latitude !== null && longitude !== null) {
       console.log("Latitude:", latitude);
       console.log("Longitude:", longitude);
 
       // Call any functions or perform actions with latitude and longitude here
       // For example, you can calculate distance using the calculateDistance function
-      const distance = calculateDistance(latitude, longitude, -36.85266445831981 , 174.77014361986554);
+      const distance = calculateDistance(
+        latitude,
+        longitude,
+        -36.85266445831981,
+        174.77014361986554
+      );
       console.log("Distance:", distance);
     }
-  }, [latitude, longitude]);
+  }
 
   return (
     <div className="App">
-      <button id="find-me" onClick={geoFindMe}>
-        Find My Location
+      <button id="find-me" onClick={handleButtonClick}>
+        Touch Grass
       </button>
       <p id="status">Click the button to get your location</p>
       <a id="map-link" target="_blank" rel="noopener noreferrer"></a>
+      <iframe
+        title="Map"
+        width="100%"
+        height="250"
+        frameBorder={0}
+        style={{ border: 0 }}
+        referrerPolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB3we59Q0GEIedl8pE7jO9zeBSn9_OS5Z4&q=University,Auckland+New Zealand"
+        allowFullScreen
+      ></iframe>
     </div>
   );
 }
