@@ -4,6 +4,7 @@ import { ref, child, get } from "firebase/database";
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import Map from '../Map';
+import './Auth.css';
 
 const AuthDetails = () => {
     const [authUser, setAuthUser] = useState(null)
@@ -79,7 +80,7 @@ const AuthDetails = () => {
             : <div>
             <h1>Sign In</h1>
             <form onSubmit={signIn}>
-              <div>
+              <div className='emailEntry'>
                 <label htmlFor="email">Email:</label>
                 <input
                   type="email"
@@ -89,7 +90,7 @@ const AuthDetails = () => {
                   required
                 />
               </div>
-              <div>
+              <div className='passEntry'>
                 <label htmlFor="password">Password:</label>
                 <input
                   type="password"
@@ -99,7 +100,7 @@ const AuthDetails = () => {
                   required
                 />
               </div>
-              <button type="submit">Sign In</button>
+              <button className='signIn' type="submit">Sign In</button>
             </form>
           </div>}
     </div>
