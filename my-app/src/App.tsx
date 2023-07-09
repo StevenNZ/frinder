@@ -82,6 +82,12 @@ function App() {
     }
   }
 
+  function toggleModalWindow(){
+    const ping = document.getElementById("ping");
+    ping?.classList.toggle("invisible");
+    console.log(ping?.classList)
+  };
+
   // Example usage of latitude and longitude
   function handleButtonClick(): void {
     geoFindMe();
@@ -117,8 +123,7 @@ function App() {
       const commonElements: boolean = findCommonElements(array1, array2);
 
       if (distance < 20 && commonElements == true) {
-        match1 = true;
-        console.log("MATCH");
+        toggleModalWindow()
       }
 
       const distance1 = calculateDistance(
@@ -150,16 +155,7 @@ function App() {
         </Link>
       </button>
 
-      {match1 ? (
-        <div>
-          <p>
-            "You have been pinged with Betty Lin, their profile will be in your
-            pings"
-          </p>
-        </div>
-      ) : (
-        ""
-      )}
+
     </div>
   );
 }

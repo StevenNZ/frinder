@@ -31,3 +31,7 @@
 *{
   font-family: monospace;
 }
+
+.invisible {
+  display: none;
+}
