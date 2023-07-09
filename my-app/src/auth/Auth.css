@@ -19,6 +19,9 @@
     font-weight: 600;
     border: none;
     cursor: pointer;
+    background-color: #282c34;
+    color: white;
+    margin-left: 15px;
     
 }
 
@@ -26,4 +29,9 @@
     background-color: black;
     color: #fff;
 }
+s
 
+.SIN{
+    color: red;
+    letter-spacing: normal;
+}

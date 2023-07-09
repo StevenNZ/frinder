@@ -92,7 +92,7 @@ const AuthDetails = () => {
         </>
       ) : (
         <div>
-          <h1>Sign In</h1>
+          <h1 className="SIN">Sign In</h1>
           <form onSubmit={signIn}>
             <div className="emailEntry">
               <label htmlFor="email">Email:</label>
