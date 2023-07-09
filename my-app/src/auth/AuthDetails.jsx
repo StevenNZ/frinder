@@ -32,16 +32,15 @@ const AuthDetails = () => {
     console.log(ping?.classList);
   }
 
-  const userSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        setAuthUser(null);
-        console.log("user signed out");
-      })
-      .catch((error) => console.log(error));
-
-    toggleModalWindow();
-  };
+    const userSignOut = () => {
+        signOut(auth).then(() => {
+            setAuthUser(null)
+            setEmail('')
+            setPassword('')
+            console.log("user signed out");
+        }).catch(error => console.log(error))
+      toggleModalWindow();
+    }
 
   const signIn = (e) => {
     e.preventDefault();
