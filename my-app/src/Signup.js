@@ -11,6 +11,8 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
+  const [social, setSocial] = useState('');
+  const [gender, setGender] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [hobbies, setHobbies] = useState('');
@@ -26,6 +28,8 @@ const Signup = () => {
           username: name,
           age: age,
           hobbies: hobbies,
+          social: social,
+          gender: gender
         });
 
         set(ref(db, auth.currentUser.uid + '/dist'), {
@@ -78,12 +82,32 @@ const Signup = () => {
           />
         </div>
         <div>
+          <label htmlFor="Gender">Gender:</label>
+          <input
+            type="text"
+            id="gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required
+          />
+        </div>
+        <div>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="social">Social:</label>
+          <input
+            type="text"
+            id="social"
+            value={social}
+            onChange={(e) => setSocial(e.target.value)}
             required
           />
         </div>

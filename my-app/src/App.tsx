@@ -154,10 +154,9 @@ function App() {
           Sign Up
         </Link>
       </button>
-
-
     </div>
   );
-}
+};
 
 export default App;
+
