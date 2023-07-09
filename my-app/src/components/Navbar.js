@@ -2,6 +2,8 @@ import "./NavbarStyles.css";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import { MenuItems } from "./MenuItems";
+import "./Navbar.css";
+
 
 class Navbar extends Component{
     state = {clicked: false};
@@ -24,6 +26,10 @@ class Navbar extends Component{
                         )
                     })}
                     <button>Sign Up</button>
+
+                    <div className="button-container">
+                        <button className="top-right-button">Sign Up</button>
+                    </div>
                 </ul>
             </nav>
         )

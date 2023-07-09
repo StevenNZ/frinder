@@ -14,4 +14,9 @@ export const MenuItems = [
         url: "/points",
         cName: "nav-links",
     },
+    {
+        title: "pinging",
+        url: "/pinging",
+        cName: "nav-links"
+    }
 ]

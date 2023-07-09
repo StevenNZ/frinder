@@ -1,0 +1,29 @@
+
+.emailEntry{
+    width: 100px;
+    height:50px;
+    padding-bottom: 15px;
+}
+
+.passEntry{
+    width: 100px;
+    height:50px;
+    padding-bottom: 15px;
+}   
+
+.signIn{
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    border-radius: 0.3rem;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.signIn::backdrop{
+    background-color: black;
+    color: #fff;
+}
+
