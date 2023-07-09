@@ -1,11 +1,12 @@
 import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
+import Event from "../components/Event";
 
 function Home () {
     return (
         <>
-            <Navbar/>
-            <Hero />
+            <Navbar />
+            
+            <Event />
         </>
     )
 }
