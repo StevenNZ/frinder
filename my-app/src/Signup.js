@@ -25,7 +25,12 @@ const Signup = () => {
           email: email,
           username: name,
           age: age,
-          hobbies: hobbies
+          hobbies: hobbies,
+        });
+
+        set(ref(db, auth.currentUser.uid + '/dist'), {
+          latitude: "",
+          longitude: ""
         });
 
         signOut(auth).then(() => {

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import './App.css';
 import { Link } from 'react-router-dom';
 import AuthDetails from './auth/AuthDetails';
+import { auth, db } from "./auth/Firebase";
+import { set, ref, update, push, child } from "firebase/database";
 
 function App() {
   const [latitude, setLatitude] = useState<number | null>(null);
@@ -77,6 +79,15 @@ function App() {
   // Example usage of latitude and longitude
   function handleButtonClick(): void {
     geoFindMe();
+
+    const dbRef = ref(db, auth.currentUser?.uid + '/dist');    
+
+    update(dbRef, { latitude: latitude, longitude: longitude }).then(() => {
+    console.log('Data updated successfully');
+  })
+  .catch((error) => {
+    console.error('Error updating data:', error);
+  });
 
     if (latitude !== null && longitude !== null) {
       console.log("Latitude:", latitude);
