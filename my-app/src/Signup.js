@@ -39,6 +39,16 @@ const Signup = () => {
 
         signOut(auth).then(() => {
           console.log("user signed out");
+
+        setName('')
+        setAge('');
+        setEmail('');
+        setSocial('');
+        setGender('');
+        setPassword('');
+        setConfirmPassword('');
+        setHobbies('');
+
       }).catch(error => console.log(error))
       })
       .catch((error) => {
