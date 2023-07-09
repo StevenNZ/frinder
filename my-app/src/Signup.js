@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from './auth/Firebase';
+import { signOut } from 'firebase/auth'
+import { auth, db } from './auth/Firebase';
+import { set, ref } from 'firebase/database';
+import Select from 'react-select'
+
 
 
 const Signup = () => {
@@ -9,17 +13,39 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [hobbies, setHobbies] = useState('');
 
   const signUp = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
+
+        set(ref(db, auth.currentUser.uid), {
+          email: email,
+          username: name,
+          age: age,
+          hobbies: hobbies
+        });
+
+        signOut(auth).then(() => {
+          console.log("user signed out");
+      }).catch(error => console.log(error))
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  const options = [
+    { value: 'reading', label: 'Reading' },
+    { value: 'cooking', label: 'Cooking' },
+    { value: 'gaming', label: 'Gaming' },
+    { value: 'bowling', label: 'Bowling' },
+    { value: 'yoga', label: 'Yoga' },
+    { value: 'music', label: 'Music' },
+    { value: 'running', label: 'Running' }
+  ]
 
   return (
     <div>
@@ -76,6 +102,17 @@ const Signup = () => {
             required
           />
         </div>
+        <Select
+          isMulti
+          name="colors"
+          options={options}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          onChange={(e) =>
+            setHobbies(e)
+          }
+          required
+  />
         <button type="submit">Sign Up</button>
       </form>
     </div>
