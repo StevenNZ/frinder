@@ -17,7 +17,7 @@ class Navbar extends Component{
                 <ul className="nav-menu">
                     {MenuItems.map((item, index) => {
                     })}
-                    <div className="container">
+                    <div className="button-container">
                         <button className="top-right-button">Sign Up</button>
                     </div>
 

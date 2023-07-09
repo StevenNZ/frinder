@@ -11,7 +11,7 @@ export interface ProfileProps {
     displayPhoto: string;
   }
 
-  const Profile: React.FC<ProfileProps> = ({ name, age, gender, hobbies, displayPhoto, social }) => {
+  const Profile: React.FC<ProfileProps> = ({ name, age, gender, hobbies, social}) => {
     return (
       <div className="profile-card">
         <div className = "displaycontainer">

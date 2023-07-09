@@ -45,7 +45,7 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <Navbar/>
-      <h1>User Profiles</h1>
+      <h1>Pinged People</h1>
       <div className="scroll-container">
         <ProfilesList profiles={profiles} />
       </div>
