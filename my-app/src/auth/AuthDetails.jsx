@@ -28,6 +28,8 @@ const AuthDetails = () => {
     const userSignOut = () => {
         signOut(auth).then(() => {
             setAuthUser(null)
+            setEmail('')
+            setPassword('')
             console.log("user signed out");
         }).catch(error => console.log(error))
     }
