@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import './App.css';
-import { Link } from 'react-router-dom';
-import AuthDetails from './auth/AuthDetails';
+import "./App.css";
+import { Link } from "react-router-dom";
+import AuthDetails from "./auth/AuthDetails";
 import { auth, db } from "./auth/Firebase";
 import { set, ref, update, push, child } from "firebase/database";
 
 function App() {
   const [latitude, setLatitude] = useState<number | null>(null);
   const [longitude, setLongitude] = useState<number | null>(null);
+  let match1 = false;
+  let match2 = false;
+  const match3 = false;
+  const match4 = false;
 
   function calculateDistance(
     lat1: number,
@@ -30,6 +34,14 @@ function App() {
     return d;
   }
 
+  function findCommonElements<T>(array1: T[], array2: T[]): boolean {
+    const commonElements: T[] = array1.filter((item) => array2.includes(item));
+    if (commonElements.length > 0) {
+      console.log(true);
+    }
+    return true;
+  }
+
   function geoFindMe(): void {
     const status: HTMLElement | null = document.querySelector("#status");
     const mapLink: HTMLAnchorElement | null =
@@ -49,12 +61,6 @@ function App() {
 
       if (status) {
         status.textContent = "";
-      }
-
-      if (mapLink) {
-        mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-        mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
-        console.log(latitude, longitude);
       }
     }
 
@@ -76,18 +82,25 @@ function App() {
     }
   }
 
+  function toggleModalWindow(){
+    const ping = document.getElementById("ping");
+    ping?.classList.toggle("invisible");
+    console.log(ping?.classList)
+  };
+
   // Example usage of latitude and longitude
   function handleButtonClick(): void {
     geoFindMe();
 
-    const dbRef = ref(db, auth.currentUser?.uid + '/dist');    
+    const dbRef = ref(db, auth.currentUser?.uid + "/dist");
 
-    update(dbRef, { latitude: latitude, longitude: longitude }).then(() => {
-    console.log('Data updated successfully');
-  })
-  .catch((error) => {
-    console.error('Error updating data:', error);
-  });
+    update(dbRef, { latitude: latitude, longitude: longitude })
+      .then(() => {
+        console.log("Data updated successfully");
+      })
+      .catch((error) => {
+        console.error("Error updating data:", error);
+      });
 
     if (latitude !== null && longitude !== null) {
       console.log("Latitude:", latitude);
@@ -95,26 +108,52 @@ function App() {
 
       // Call any functions or perform actions with latitude and longitude here
       // For example, you can calculate distance using the calculateDistance function
+
+      const array1: string[] = ["Runing", "Music", "Cooking"];
+      const array2: string[] = ["Music", "Cooking", "Gaming"];
+      const array3: string[] = ["Bowling", "Yoga", "Gaming"];
+
       const distance = calculateDistance(
         latitude,
         longitude,
         -36.85266445831981,
         174.77014361986554
       );
+
+      const commonElements: boolean = findCommonElements(array1, array2);
+
+      if (distance < 20 && commonElements == true) {
+        toggleModalWindow()
+      }
+
+      const distance1 = calculateDistance(
+        latitude,
+        longitude,
+        -168.85266445831981,
+        14.77014361986554
+      );
+
+      const commonElements1: boolean = findCommonElements(array1, array3);
+
+      if (distance1 < 20 && commonElements1 == true) {
+        match2 = true;
+      }
+
       console.log("Distance:", distance);
     }
   }
 
-
   return (
     <div className="App">
-      <AuthDetails/>
-      <button id="find-me" onClick={handleButtonClick}>
+      <AuthDetails />
+      <button className="TouchBtn" id="find-me" onClick={handleButtonClick}>
         Touch Grass
       </button>
-      <Link to="/sign-up" target="_blank">Open New Tab</Link>
-      <Link to="/ping" target="_blank">Pings</Link>
-
+      <button className="SignUp">
+        <Link to="/sign-up" target="_blank" >
+          Sign Up
+        </Link>
+      </button>
     </div>
   );
 };
