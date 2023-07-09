@@ -113,8 +113,11 @@ function App() {
         Touch Grass
       </button>
       <Link to="/sign-up" target="_blank">Open New Tab</Link>
+      <Link to="/ping" target="_blank">Pings</Link>
+
     </div>
   );
-}
+};
 
 export default App;
+

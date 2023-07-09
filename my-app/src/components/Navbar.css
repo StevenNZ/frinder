@@ -1,0 +1,41 @@
+.navbar-logo{
+    color: black;
+    font-size: 26px;
+    text-align: left;
+}
+
+.button-container {
+    position: relative;   
+  }
+  
+  .top-right-button {
+    position: absolute;
+    top:-60px;
+    right: 20px;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    border-radius: 0.3rem;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+
+ 
+button:hover{
+    background-color: black;
+    color: #fff;
+}
+
+h1{
+    text-align: center;
+    color: red;
+    top:10px;
+    left: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 200;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  
